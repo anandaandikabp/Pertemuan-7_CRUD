@@ -43,6 +43,36 @@ const detailContact = (name) => {
     }
 }
 
+// edit kontak yang dicari
+const editContact = (id, name, email, mobile) => {
+    const old = detailContact(id);    
+    let newName;
+    let newEmail;
+    let newMobile;
+
+    if (name === undefined) {
+        newName = old.name;
+    } else {
+        newName = name;
+    }
+    
+    if (email === undefined) {
+        newEmail = old.email;
+    } else {
+        newEmail = email;
+    }
+
+    if (mobile === undefined) {
+        newMobile = old.mobile;
+    } else {
+        newMobile = mobile;
+    }
+
+    hapusContact(id);
+    answer(newName,newEmail,newMobile);   
+    console.log('Thankyou');
+}
+
 // hapus data
 const hapusContact = (name) => {
     const contacts = loadContact(); 
@@ -82,4 +112,4 @@ const answer = (name, email, mobile) => {
     console.log('Thankyou');
 };
 
-module.exports = {answer, loadContact, listContact, detailContact, hapusContact};
+module.exports = {answer, loadContact, listContact, detailContact, hapusContact, editContact};
