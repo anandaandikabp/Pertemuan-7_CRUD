@@ -43,10 +43,18 @@ const detailContact = (name) => {
     }
 }
 
+// hapus data
+const hapusContact = (name) => {
+    const contacts = loadContact(); 
+    const newContacts = contacts.filter((contact) => contact.name !== name);
+    fs.writeFileSync('data/contacts.json',JSON.stringify(newContacts));
+    console.log('Thankyou');
+};
+
 // simpan data
 const answer = (name, email, mobile) => {
     const contact = {name,email,mobile};   
-    const contacts =loadContact(); 
+    const contacts = loadContact(); 
 
     // cek duplikat
     const duplikat = contacts.find(contact => contact.name === name);
@@ -74,4 +82,4 @@ const answer = (name, email, mobile) => {
     console.log('Thankyou');
 };
 
-module.exports = {answer, loadContact, listContact, detailContact};
+module.exports = {answer, loadContact, listContact, detailContact, hapusContact};

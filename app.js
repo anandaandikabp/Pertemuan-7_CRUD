@@ -52,6 +52,22 @@ yargs.command({
     },
 });
 
+// fungsi delete data
+yargs.command({
+    command:'delete',
+    describe:'delete contact',
+    builder:{
+        name:{
+            describe: 'Contact Name',
+            demandOption: true,
+            type: 'string',
+        },
+    },
+    handler(argv){
+        contact.hapusContact(argv.name)
+    },
+});
+
 yargs.parse();
 
 
